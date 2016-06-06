@@ -98,7 +98,7 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
         if self.user.details["customerID"]! as! String == "none" || self.user.details["paymentID"]! as! String == "none"{
             performSegueWithIdentifier("initPaySegue", sender: self)
         }else{
-            "here we would segue to mapViewController"
+            print("here we would segue to mapViewController")
         }
     }
     

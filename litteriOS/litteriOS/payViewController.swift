@@ -11,6 +11,7 @@ import Stripe
 
 class payViewController:UIViewController, STPPaymentCardTextFieldDelegate{
     var user:User!
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
     
     let pTextField = STPPaymentCardTextField()
     let dTextField = STPPaymentCardTextField()
@@ -31,6 +32,10 @@ class payViewController:UIViewController, STPPaymentCardTextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(payViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(payViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        hideKeyboardWhenTappedAround()
         initCardView()
     }
     
@@ -111,7 +116,7 @@ class payViewController:UIViewController, STPPaymentCardTextFieldDelegate{
     }
     
     @IBAction func saveButtonPressed(sender: UIButton) {
-        var cardTokens = [String:AnyObject]()
+        var cardTokens = [String:String]()
         
         func createToken(cardSubmit:STPPaymentCardTextField, type:String, done:Bool)->(){
             let card = cardSubmit.cardParams
@@ -119,30 +124,57 @@ class payViewController:UIViewController, STPPaymentCardTextFieldDelegate{
                 if let error = error{
                     print(error)
                 }else if let token = token{
-                    cardTokens[type] = token
-                    if self.optionBools["debitDual"]! && type != "credit"{
-                        cardTokens["recipient"] = token
-                    }else if self.optionBools["debitDual"]!{
-                        cardTokens["credit"] = token
-                    }
-                    print(cardTokens)
+                    cardTokens[type] = token.tokenId as String
+                    print(self.optionBools)
                     
+                    if self.optionBools["debitDual"]!{
+                        if type == "credit"{
+                            print("what")
+                            cardTokens["recipient"] = token.tokenId as String
+                        }else{
+                            cardTokens["credit"] = token.tokenId as String
+                        }
+                    }else if done == false{
+                        if type == "credit"{
+                            createToken(self.dTextField, type:"recipient", done:true)
+                        }else{
+                            createToken(self.pTextField, type:"credit",done:true)
+                        }
+                    }else{
+                        cardTokens["fb"] = self.user.details["fb"]! as? String
+                        self.user.updatePaymentMethod(cardTokens, callback: self.performSegue)
+                    }
                     
                 }
             }
         }
         
-        createToken(pTextField, type:"credit", done:true)
+        if optionBools["bid"]! && optionBools["paid"]! && optionBools["debitDual"] == false{
+            createToken(pTextField, type:"credit", done:false)
+        }else{
+            createToken(pTextField, type:"credit",done:true)
+        }
 
     }
     
-    func retrieveToken(token:STPToken)->STPToken{
-        return token
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if screenSize.height < 600 && dTextField.isFirstResponder(){
+            self.bodyViews[0].hidden = true
+        }
     }
     
-    func sendTokensToServer(tokenData:[String:AnyObject])->(){
-        print("SendTokenToServer")
-        print(tokenData)
+    func performSegue(error:String?=nil){
+        if ((error) != nil){
+            print("some error")
+        }else{
+            print("we are successful and would perform segue")
+        }
+    }
+    func keyboardWillHide(notification: NSNotification){
+        if self.bodyViews[0].hidden{
+            self.bodyViews[0].hidden = false 
+        }
     }
         
 }

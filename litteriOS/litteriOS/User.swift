@@ -114,6 +114,49 @@ class User{
 
     }
     
+    func updatePaymentMethod(tokenData:[String:String], callback:(String?)->())->(){
+        do {
+            print("updatePaymentreached")
+            print(tokenData)
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(tokenData, options: NSJSONWritingOptions.PrettyPrinted)
+            
+            let url = NSURL(string: "http://192.168.1.2:5000/updatePaymentMethod")!
+            let request = NSMutableURLRequest(URL: url)
+            
+            request.HTTPMethod = "POST"
+            request.setValue("application/json; charset=utf-8",forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+            
+            print("wegothere")
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
+                if error != nil{
+                    print("Error -> \(error)")
+                    return
+                }
+                
+                do {
+                    print("thisiswherewefuckup")
+                    let data_res = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? [String:AnyObject]
+                    
+                    if data_res!["status"]! as! String == "success"{
+                        callback(nil)
+                        
+                    }else{
+                        callback("error")
+                        
+                    }
+                } catch {
+                    print("Error -> \(error)")
+                }
+            }
+            
+            task.resume()
+            
+        } catch {
+            print(error)
+        }
+    }
+    
     func detailInjection(info: AnyObject?){
         self.details = [
             "name": info!["name"]!! as! String,

@@ -12,4 +12,8 @@ module.exports = function(app) {
 		console.log("login reached")
 		users.find(req, res)
 	})
+	app.post('/updatePaymentMethod',function(req,res){
+		console.log("update route reached")
+		users.updatePaymentMethod(req,res)
+	})
 };

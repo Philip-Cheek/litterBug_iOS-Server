@@ -188,22 +188,6 @@
             timestampString = "486668734.592668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "login(_:callback:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "litteriOS/User.swift"
-            timestampString = "486668734.592668"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
             landmarkName = "login(_:callback:)"
@@ -217,11 +201,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486609131.69518"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "optionBools"
             landmarkType = "19">
          </BreakpointContent>
@@ -233,11 +217,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486703936.780813"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "initCardView()"
             landmarkType = "5">
          </BreakpointContent>
@@ -265,11 +249,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/User.swift"
-            timestampString = "486672894.164692"
+            timestampString = "486874891.361199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "detailInjection(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -313,11 +297,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486774141.6508"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "cardConfig(_:textField:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -329,59 +313,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486774505.437741"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "retrieveToken(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "litteriOS.payViewController.sendTokenToServer (Swift.Optional&lt;protocol&lt;&gt;&gt;) -&gt; ()"
-                  moduleName = "litteriOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/philipcheek/Desktop/litterBug/litteriOS/litteriOS/payViewController.swift"
-                  timestampString = "486768557.622574"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "35">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "litteriOS.payViewController.sendTokenToServer (Swift.Optional&lt;protocol&lt;&gt;&gt;) -&gt; ()"
-                  moduleName = "litteriOS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/philipcheek/Desktop/litterBug/litteriOS/litteriOS/payViewController.swift"
-                  timestampString = "486768557.622765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "17">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "litteriOS/payViewController.swift"
-            timestampString = "486774505.437741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "saveButtonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -393,11 +329,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486774505.437741"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "createToken(_:type:done:)"
             landmarkType = "7">
             <Locations>
@@ -441,11 +377,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486774141.6508"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "setCardView()"
             landmarkType = "5">
          </BreakpointContent>
@@ -457,12 +393,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/payViewController.swift"
-            timestampString = "486774490.83755"
+            timestampString = "486861999.020174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "debButtonPressed(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "litteriOS/payViewController.swift"
+            timestampString = "486861999.020174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "createToken(_:type:done:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "litteriOS/payViewController.swift"
+            timestampString = "486861999.020174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "createToken(_:type:done:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "litteriOS/User.swift"
+            timestampString = "486874891.361199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "updatePaymentMethod(_:callback:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

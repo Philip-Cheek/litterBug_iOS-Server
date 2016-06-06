@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var stripe = require('stripe')("sk_test_XttTL6wlT53nyOeV6XKNQ1GY")
 
 module.exports = (function() {
 	return{
@@ -30,6 +31,7 @@ module.exports = (function() {
 				});
 			}
 		},
+
 		find: function(req,res){
 			if (!req.body.fb){
 				console.log(req.body)
@@ -50,6 +52,115 @@ module.exports = (function() {
 					}
 
 				});
+			}
+		},
+
+		updatePaymentMethod: function(req,res){
+			console.log(req.body)
+			if (!req.body.fb){
+				console.log("no facebook token")
+				res.json({"status": "fail"})
+			}else{
+				console.log("here is updatePaymentMethod req")
+				console.log(req.body)
+				User.findOne({"fb":req.body.fb}, function(err,result){
+					if (err){
+						console.log(err);
+					}else{
+						console.log("we got user");
+						console.log(result);
+
+						var user_info = {
+							"customerID": result.customerID,
+							"recipientID": result.paymentID
+						};
+
+						function create_customer(callback){
+							console.log("create customer called")
+							stripe.customers.create({
+								source: req.body.credit,
+								email: result.email
+							}, function(err, customer){
+								if (err){
+									console.log("fucked up on customer creation");
+									console.log(err);
+								}else{
+									console.log("customer successfully created");
+									console.log(customer);
+									user_info["customerID"] = customer.id;
+
+									console.log("keeping tabs on user_info");
+									console.log(user_info);
+
+									callback()
+								}
+							});
+						};
+
+						function create_recipient(callback){
+							stripe.recipients.create({
+								name: result.name,
+								type: "individual",
+								card: req.body.recipient 
+							},function(err, recipient){
+								if (err){
+									console.log("fucked up on recipient creation")
+									console.log(err)
+								}else{
+									console.log("recipient successfully created!")
+									console.log("recipient")
+
+									user_info["recipientID"] = recipient.id
+
+									console.log("keeping tabs on user_info");
+									console.log(user_info);
+
+									callback();
+								}
+							})
+						};
+
+						function save_newPayment(callback){
+							User.update({'fb': req.body.fb},{
+								customerID: user_info["customerID"],
+								paymentID: user_info["recipientID"]
+							}, 
+							function(err, response){
+								if(err){
+									console.log("error on User.update")
+								}else if(!response){
+									console.log("no response on User.update")
+								}else{
+									console.log("successfully updated");
+									console.log(response)
+
+									res.json({status:"success"})
+								}
+							})
+						};
+
+						if (req.body.credit){
+							create_customer(function(){
+								if (req.body.recipient){
+									create_recipient(save_newPayment)
+								}else{
+									save_newPayment()
+								}
+							})
+						}else if (req.body.recipient){
+							create_recipient(function(){
+								if (req.body.credit){
+									create_customer(save_newPayment)
+								}else{
+									save_newPayment()
+								}
+							});
+						};
+					}
+				})
+
+
+				
 			}
 		}
 	}

@@ -25,6 +25,7 @@
 		C06CD77A1CFFAC5D0072B611 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06CD7791CFFAC5D0072B611 /* Stripe.framework */; };
 		C06CD7BC1CFFF27A0072B611 /* payViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CD7BB1CFFF27A0072B611 /* payViewController.swift */; };
 		C0AB14B01D0395F100BAFF27 /* viewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB14AF1D0395F100BAFF27 /* viewControllerExtentions.swift */; };
+		C0ED37891D05256F00EAE43A /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED37881D05256F00EAE43A /* mapViewController.swift */; };
 		C0F1A73B1D010C5100EB68AF /* colorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1A73A1D010C5100EB68AF /* colorExtentions.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		C06CD7791CFFAC5D0072B611 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
 		C06CD7BB1CFFF27A0072B611 /* payViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = payViewController.swift; sourceTree = "<group>"; };
 		C0AB14AF1D0395F100BAFF27 /* viewControllerExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = viewControllerExtentions.swift; sourceTree = "<group>"; };
+		C0ED37881D05256F00EAE43A /* mapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		C0F1A73A1D010C5100EB68AF /* colorExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colorExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 				C04371351CF8EBA0009EE868 /* User.swift */,
 				C04371011CF8E9A7009EE868 /* introViewController.swift */,
 				C04371031CF8E9A7009EE868 /* Main.storyboard */,
+				C0ED37881D05256F00EAE43A /* mapViewController.swift */,
 				C0F1A73A1D010C5100EB68AF /* colorExtentions.swift */,
 				C06CD7BB1CFFF27A0072B611 /* payViewController.swift */,
 				C0AB14AF1D0395F100BAFF27 /* viewControllerExtentions.swift */,
@@ -330,6 +333,7 @@
 				C04371081CF8E9A7009EE868 /* litteriOS.xcdatamodeld in Sources */,
 				C06CD7BC1CFFF27A0072B611 /* payViewController.swift in Sources */,
 				C04371001CF8E9A7009EE868 /* AppDelegate.swift in Sources */,
+				C0ED37891D05256F00EAE43A /* mapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
