@@ -9,10 +9,14 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import CoreLocation
 
 
 class introViewController: UIViewController, FBSDKLoginButtonDelegate{
     var user:User = User()
+    var login_clicked:Bool = false
+    
+    let locationManager = CLLocationManager()
 
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     
@@ -31,7 +35,7 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         self.wingFlap()
-        if (FBSDKAccessToken.currentAccessToken() != nil){
+        if (FBSDKAccessToken.currentAccessToken() != nil && login_clicked == false){
             //self.loginButton.hidden = true
             //self.welcome.hidden = false
             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id"])
@@ -55,12 +59,17 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let scene = segue.destinationViewController as! payViewController
-        scene.user = self.user
-        
-        print("Checking user transfer")
-        print(scene.user.details)
+        if segue.identifier == "initPaySegue"{
+            let pay = segue.destinationViewController as! payViewController
+            pay.user = self.user
+        }else{
+            let target = segue.destinationViewController as! UITabBarController
+            let map = target.viewControllers![0] as! mapViewController
+            map.user = self.user
+        }
     }
+    
+    
     
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -75,6 +84,7 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
                     print("Error: \(error)")
                     
                 }else{
+                    self.login_clicked = true
                     self.user.login(result, callback: self.performSegue)
                 }
                     
@@ -99,6 +109,8 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
             performSegueWithIdentifier("initPaySegue", sender: self)
         }else{
             print("here we would segue to mapViewController")
+            
+            performSegueWithIdentifier("initMapSegue", sender: self)
         }
     }
     

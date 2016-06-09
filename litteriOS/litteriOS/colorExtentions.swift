@@ -21,4 +21,8 @@ extension UIColor {
     static func brandGreen() -> UIColor{
         return UIColor.createColor(76.0, g: 212.0, b: 176.0, a: 1.0)
     }
+    
+    static func brandBlue() -> UIColor{
+        return UIColor.createColor(0.0, g: 64.0, b: 116.0, a: 1.0)
+    }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -19,3 +20,4 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+

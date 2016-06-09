@@ -39,6 +39,12 @@ class payViewController:UIViewController, STPPaymentCardTextFieldDelegate{
         initCardView()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let target = segue.destinationViewController as! UINavigationController
+        let scene = target.topViewController as! mapViewController
+        scene.user = self.user
+    }
+    
     func initCardView(){
         cardConfig(pCardView, textField: pTextField)
         cardConfig(dCardView, textField: dTextField)
@@ -168,11 +174,11 @@ class payViewController:UIViewController, STPPaymentCardTextFieldDelegate{
         if ((error) != nil){
             print("some error")
         }else{
-            print("we are successful and would perform segue")
+            performSegueWithIdentifier("payMapSegue", sender: self)
         }
     }
     func keyboardWillHide(notification: NSNotification){
-        if self.bodyViews[0].hidden{
+        if optionBools["bid"]!{
             self.bodyViews[0].hidden = false 
         }
     }

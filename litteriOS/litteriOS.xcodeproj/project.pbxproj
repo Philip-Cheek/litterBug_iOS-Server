@@ -24,9 +24,18 @@
 		C04371361CF8EBA0009EE868 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04371351CF8EBA0009EE868 /* User.swift */; };
 		C06CD77A1CFFAC5D0072B611 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06CD7791CFFAC5D0072B611 /* Stripe.framework */; };
 		C06CD7BC1CFFF27A0072B611 /* payViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06CD7BB1CFFF27A0072B611 /* payViewController.swift */; };
+		C086AD3A1D08F77C00773BD0 /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086AD391D08F77C00773BD0 /* postViewController.swift */; };
+		C086AD3C1D09227900773BD0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C086AD3B1D09227900773BD0 /* Post.swift */; };
 		C0AB14B01D0395F100BAFF27 /* viewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AB14AF1D0395F100BAFF27 /* viewControllerExtentions.swift */; };
 		C0ED37891D05256F00EAE43A /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ED37881D05256F00EAE43A /* mapViewController.swift */; };
 		C0F1A73B1D010C5100EB68AF /* colorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1A73A1D010C5100EB68AF /* colorExtentions.swift */; };
+		C0F30A121D07671D00585B86 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F30A111D07671D00585B86 /* cameraViewController.swift */; };
+		C0F30A141D076E5100585B86 /* viewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F30A131D076E5100585B86 /* viewExtentions.swift */; };
+		C0F30A161D076E7B00585B86 /* stringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F30A151D076E7B00585B86 /* stringExtentions.swift */; };
+		C0F30A181D07835800585B86 /* takePhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F30A171D07835800585B86 /* takePhoto.png */; };
+		C0F30A1A1D07926A00585B86 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F30A191D07926A00585B86 /* Camera.swift */; };
+		C0FAC3B21D062EF5006252C9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FAC3B11D062EF5006252C9 /* MapKit.framework */; };
+		C0FAC3B41D062EFC006252C9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FAC3B31D062EFC006252C9 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,9 +79,18 @@
 		C04371351CF8EBA0009EE868 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C06CD7791CFFAC5D0072B611 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
 		C06CD7BB1CFFF27A0072B611 /* payViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = payViewController.swift; sourceTree = "<group>"; };
+		C086AD391D08F77C00773BD0 /* postViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
+		C086AD3B1D09227900773BD0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C0AB14AF1D0395F100BAFF27 /* viewControllerExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = viewControllerExtentions.swift; sourceTree = "<group>"; };
 		C0ED37881D05256F00EAE43A /* mapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		C0F1A73A1D010C5100EB68AF /* colorExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colorExtentions.swift; sourceTree = "<group>"; };
+		C0F30A111D07671D00585B86 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
+		C0F30A131D076E5100585B86 /* viewExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = viewExtentions.swift; sourceTree = "<group>"; };
+		C0F30A151D076E7B00585B86 /* stringExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stringExtentions.swift; sourceTree = "<group>"; };
+		C0F30A171D07835800585B86 /* takePhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = takePhoto.png; path = "../../../../../Downloads/Analog-camera-icon/takePhoto.png"; sourceTree = "<group>"; };
+		C0F30A191D07926A00585B86 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		C0FAC3B11D062EF5006252C9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C0FAC3B31D062EFC006252C9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FAC3B41D062EFC006252C9 /* CoreLocation.framework in Frameworks */,
+				C0FAC3B21D062EF5006252C9 /* MapKit.framework in Frameworks */,
 				C04371331CF8E9E2009EE868 /* FBSDKLoginKit.framework in Frameworks */,
 				C04371321CF8E9E2009EE868 /* FBSDKCoreKit.framework in Frameworks */,
 				C06CD77A1CFFAC5D0072B611 /* Stripe.framework in Frameworks */,
@@ -114,6 +134,7 @@
 		C01E7B7C1CFCC6C200CDA216 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C0F30A171D07835800585B86 /* takePhoto.png */,
 				C01E7B811CFCE66800CDA216 /* bugSlant.png */,
 				C01E7B891CFCED4800CDA216 /* wing2.png */,
 				C01E7B8B1CFCF98200CDA216 /* wing1.png */,
@@ -151,10 +172,16 @@
 				C04371351CF8EBA0009EE868 /* User.swift */,
 				C04371011CF8E9A7009EE868 /* introViewController.swift */,
 				C04371031CF8E9A7009EE868 /* Main.storyboard */,
+				C0F30A191D07926A00585B86 /* Camera.swift */,
+				C0F30A111D07671D00585B86 /* cameraViewController.swift */,
+				C086AD391D08F77C00773BD0 /* postViewController.swift */,
+				C086AD3B1D09227900773BD0 /* Post.swift */,
 				C0ED37881D05256F00EAE43A /* mapViewController.swift */,
 				C0F1A73A1D010C5100EB68AF /* colorExtentions.swift */,
 				C06CD7BB1CFFF27A0072B611 /* payViewController.swift */,
 				C0AB14AF1D0395F100BAFF27 /* viewControllerExtentions.swift */,
+				C0F30A131D076E5100585B86 /* viewExtentions.swift */,
+				C0F30A151D076E7B00585B86 /* stringExtentions.swift */,
 				C04371091CF8E9A7009EE868 /* Assets.xcassets */,
 				C043710B1CF8E9A7009EE868 /* LaunchScreen.storyboard */,
 				C043710E1CF8E9A7009EE868 /* Info.plist */,
@@ -184,6 +211,8 @@
 		C04371341CF8E9F3009EE868 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0FAC3B31D062EFC006252C9 /* CoreLocation.framework */,
+				C0FAC3B11D062EF5006252C9 /* MapKit.framework */,
 				C06CD7791CFFAC5D0072B611 /* Stripe.framework */,
 				C04371311CF8E9E2009EE868 /* FBSDKLoginKit.framework */,
 				C04371301CF8E9E2009EE868 /* FBSDKCoreKit.framework */,
@@ -259,6 +288,12 @@
 				TargetAttributes = {
 					C04370FB1CF8E9A7009EE868 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8L4596EWRA;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					C04371121CF8E9A7009EE868 = {
 						CreatedOnToolsVersion = 7.3;
@@ -302,6 +337,7 @@
 				C043710A1CF8E9A7009EE868 /* Assets.xcassets in Resources */,
 				C01E7B8A1CFCED4800CDA216 /* wing2.png in Resources */,
 				C04371051CF8E9A7009EE868 /* Main.storyboard in Resources */,
+				C0F30A181D07835800585B86 /* takePhoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,10 +363,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C04371361CF8EBA0009EE868 /* User.swift in Sources */,
+				C0F30A121D07671D00585B86 /* cameraViewController.swift in Sources */,
 				C0F1A73B1D010C5100EB68AF /* colorExtentions.swift in Sources */,
 				C0AB14B01D0395F100BAFF27 /* viewControllerExtentions.swift in Sources */,
 				C04371021CF8E9A7009EE868 /* introViewController.swift in Sources */,
+				C086AD3C1D09227900773BD0 /* Post.swift in Sources */,
+				C0F30A141D076E5100585B86 /* viewExtentions.swift in Sources */,
 				C04371081CF8E9A7009EE868 /* litteriOS.xcdatamodeld in Sources */,
+				C0F30A161D076E7B00585B86 /* stringExtentions.swift in Sources */,
+				C086AD3A1D08F77C00773BD0 /* postViewController.swift in Sources */,
+				C0F30A1A1D07926A00585B86 /* Camera.swift in Sources */,
 				C06CD7BC1CFFF27A0072B611 /* payViewController.swift in Sources */,
 				C04371001CF8E9A7009EE868 /* AppDelegate.swift in Sources */,
 				C0ED37891D05256F00EAE43A /* mapViewController.swift in Sources */,
@@ -477,6 +519,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -486,6 +530,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = iOSphil.litteriOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -493,6 +538,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -502,6 +549,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = iOSphil.litteriOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
