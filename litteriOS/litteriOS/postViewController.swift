@@ -12,7 +12,7 @@ import CoreLocation
 import AVFoundation
 import MapKit
 
-class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate{
     
     //INCOMING DETAILS 
     var location:CLLocation!
@@ -26,6 +26,7 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var severityLevel: UIPickerView!
     @IBOutlet weak var litDescript: UITextView!
     @IBOutlet weak var charCounter: UILabel!
+    @IBOutlet var imageRow: [UIImageView]!
     
     
     //MAIN BODY
@@ -42,8 +43,11 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print(author.details)
         print(gallery)
         
-        setMap()
-        setFields()
+        self.litDescript.textColor = UIColor.grayColor()
+        
+        self.setNewImageRow()
+        self.setMap()
+        self.setFields()
     }
     
     
@@ -62,19 +66,30 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        post.details["severity"] = dataPicker[row]
+        print("assigning picker view")
+        post.details["level"] = dataPicker[row]
+        print(post.details["level"])
+    }
+    
+    
+    //TEXT VIEW MONITORS
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        litDescript.text = ""
+        litDescript.textColor = UIColor.blackColor()
+        charCounterChange()
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        charCounterChange()
     }
     
     
     //WORKER FUNCTIONS
-    
-    func initView(){
-        if self.new{
-            self.litDescript.text = "Enter task description"
-            self.charCounterChange()
-            post.prePopulateAddress(self.location, callback: self.getAddress)
+    func setNewImageRow(){
+        for idx in 0..<gallery.count{
+            self.imageRow[idx].image = gallery[idx]
         }
-        
     }
     
     func charCounterChange(){
@@ -86,13 +101,21 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
             litDescript.textColor = UIColor.redColor()
         }else if litDescript.textColor == UIColor.redColor(){
             charCounter.textColor = UIColor.blackColor()
-            litDescript.textColor = UIColor.blackColor()
+            litDescript.textColor = UIColor.grayColor()
         }
     }
     
     func setFields(){
         self.severityLevel.dataSource = self
         self.severityLevel.delegate = self
+        self.litDescript.delegate = self
+        
+        if self.new{
+            self.litDescript.text = "Enter task description"
+            self.charCounterChange()
+            post.prePopulateAddress(self.location, callback: self.getAddress)
+        }
+
     }
     
     func getAddress(addr:String){

@@ -642,6 +642,9 @@
                         <outlet property="litDescript" destination="ntu-cF-POb" id="dCj-oh-hcx"/>
                         <outlet property="mapView" destination="qN2-X2-qxL" id="kKX-Ur-JC9"/>
                         <outlet property="severityLevel" destination="kb2-ZK-MkC" id="Pdx-F4-2ES"/>
+                        <outletCollection property="imageRow" destination="smY-kB-wXG" collectionClass="NSMutableArray" id="E05-BX-Nfh"/>
+                        <outletCollection property="imageRow" destination="9eB-Yj-hKm" collectionClass="NSMutableArray" id="7GZ-wx-l6B"/>
+                        <outletCollection property="imageRow" destination="dA7-eO-tqh" collectionClass="NSMutableArray" id="a2m-Ac-GQB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKd-vT-Tff" userLabel="First Responder" sceneMemberID="firstResponder"/>
