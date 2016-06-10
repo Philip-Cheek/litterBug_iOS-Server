@@ -12,11 +12,13 @@ import CoreLocation
 
 class cameraViewController:UIViewController{
     
+    //INCOMING DETAILS 
     var user:User!
     var camera:Camera!
-    
     var location:CLLocation!
     
+    
+    //CAMERA VIEW OUTLETS
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var jumboPreview: UIImageView!
     @IBOutlet var imageRow: [UIImageView]!
@@ -27,6 +29,8 @@ class cameraViewController:UIViewController{
     @IBOutlet var camBottomBarButtons: [UIButton]!
     @IBOutlet weak var warning: UILabel!
     
+    
+    //MAIN BODY 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +54,16 @@ class cameraViewController:UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "postSegue"{
             let scene = segue.destinationViewController as! postViewController
-            scene.post.location = self.location
-            scene.post.authorObjectId = self.user.details["id"]! as! String
-            scene.post.gallery = self.camera.imageCollection
-            scene.user = self.user
+            scene.location = self.location
+            scene.gallery = self.camera.imageCollection
+            scene.author = self.user
             
         }
     }
     
-    func setAJumboPreview(image:UIImage){
-        self.jumboPreview.image = image
-        self.camBottomBar.hidden = false
-        self.takePhotoButton.hidden = true
-        
-    }
+    
+    //CAMERA VIEW ACTIONS
+    
     @IBAction func useJumboPreview(sender: UIButton) {
         if self.camera.imageCollection.count < 3{
             sender.enabled = false
@@ -89,64 +89,6 @@ class cameraViewController:UIViewController{
             self.displayWarning("under")
         }else{
             performSegueWithIdentifier("postSegue", sender: self)
-        }
-    }
-    
-    func initMasterView(){
-        self.warning.alpha = 0.0
-        self.setImageRow()
-        self.addGesturesToImageRow()
-        self.camBottomBar.backgroundColor = UIColor.brandBlue().colorWithAlphaComponent(0.5)
-        self.camBottomBar.hidden = true
-    }
-    
-    func addGesturesToImageRow(){
-        for image:UIImageView in self.imageRow{
-            let didTap = UITapGestureRecognizer(target:self, action: #selector(self.didTapImage))
-            print("addingimage")
-            print (image.tag)
-            image.addGestureRecognizer(didTap)
-        }
-    }
-    
-    func didTapImage(sender:UITapGestureRecognizer!){
-        print("thisshouldwork)")
-        
-        for image:UIImageView in self.imageRow{
-            if image != image.tag{
-                image.layer.borderColor = UIColor.whiteColor().CGColor
-                
-            }
-        }
-        
-        if let imageView = sender.view as? UIImageView{
-            if imageView.image != nil{
-                if jumboPreview.image != nil && jumboPreview.image! == imageView.image!{
-                    imageView.layer.borderColor = UIColor.whiteColor().CGColor
-                    resetCamera()
-                }else{
-                    imageView.layer.borderColor = UIColor.brandBlue().CGColor
-                    self.setAJumboPreview(imageView.image!)
-                }
-                
-            }else{
-                resetCamera()
-            }
-            
-        }
-    }
-    
-    func setImageRow(){
-        for idx in 0..<self.imageRow.count{
-            let image = imageRow[idx]
-
-            parentViews[idx].bringSubviewToFront(image)
-            image.layer.cornerRadius = image.frame.size.width/2
-            image.layer.masksToBounds = true
-            image.layer.borderWidth = 5
-            image.layer.borderColor = UIColor.whiteColor().CGColor
-            
-    
         }
     }
     
@@ -179,17 +121,34 @@ class cameraViewController:UIViewController{
         self.resetCamera()
     }
     
-    func setImageRowItemToBlank(index:Int){
-        self.imageRow[index].image = nil
-        self.imageRow[index].layer.borderColor = UIColor.whiteColor().CGColor
-    }
-    
-    
     @IBAction func newPhoto(sender: UIButton) {
         self.resetCamera()
         for imageView:UIImageView in self.imageRow{
             imageView.layer.borderColor = UIColor.whiteColor().CGColor
         }
+    }
+    
+    
+    //WORKER FUNCTIONS
+    
+    func initMasterView(){
+        self.warning.alpha = 0.0
+        self.setImageRow()
+        self.addGesturesToImageRow()
+        self.camBottomBar.backgroundColor = UIColor.brandBlue().colorWithAlphaComponent(0.5)
+        self.camBottomBar.hidden = true
+    }
+    
+    func setAJumboPreview(image:UIImage){
+        self.jumboPreview.image = image
+        self.camBottomBar.hidden = false
+        self.takePhotoButton.hidden = true
+        
+    }
+    
+    func setImageRowItemToBlank(index:Int){
+        self.imageRow[index].image = nil
+        self.imageRow[index].layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     func resetCamera(){
@@ -221,9 +180,60 @@ class cameraViewController:UIViewController{
             print("we'reDONEWARNINGLKJSDF")
             self.warning.fadeOut(0.8, delay: 1.0)
         })
-
+        
     }
     
+    
+    //FUNCTIONALITY FOR IMAGE ROW
+
+    func addGesturesToImageRow(){
+        for image:UIImageView in self.imageRow{
+            let didTap = UITapGestureRecognizer(target:self, action: #selector(self.didTapImage))
+            print("addingimage")
+            print (image.tag)
+            image.addGestureRecognizer(didTap)
+        }
+    }
+    
+    func didTapImage(sender:UITapGestureRecognizer!){
+        print("thisshouldwork)")
+        
+        for image:UIImageView in self.imageRow{
+            if image != image.tag{
+                image.layer.borderColor = UIColor.whiteColor().CGColor
+                
+            }
+        }
+        
+        if let imageView = sender.view as? UIImageView{
+            if imageView.image != nil{
+                if jumboPreview.image != nil && jumboPreview.image! == imageView.image!{
+                    imageView.layer.borderColor = UIColor.whiteColor().CGColor
+                    resetCamera()
+                }else{
+                    imageView.layer.borderColor = UIColor.brandBlue().CGColor
+                    self.setAJumboPreview(imageView.image!)
+                }
+                
+            }else{
+                resetCamera()
+            }
+        }
+    }
+    
+    func setImageRow(){
+        for idx in 0..<self.imageRow.count{
+            let image = imageRow[idx]
+            
+            parentViews[idx].bringSubviewToFront(image)
+            image.layer.cornerRadius = image.frame.size.width/2
+            image.layer.masksToBounds = true
+            image.layer.borderWidth = 5
+            image.layer.borderColor = UIColor.whiteColor().CGColor
+            
+            
+        }
+    }
 
     
 
