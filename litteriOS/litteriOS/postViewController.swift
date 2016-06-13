@@ -12,7 +12,7 @@ import CoreLocation
 import AVFoundation
 import MapKit
 
-class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate{
+class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate{
     
     //INCOMING DETAILS 
     var location:CLLocation!
@@ -27,6 +27,9 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var litDescript: UITextView!
     @IBOutlet weak var charCounter: UILabel!
     @IBOutlet var imageRow: [UIImageView]!
+    @IBOutlet weak var donateBody: UITextField!
+    @IBOutlet weak var titlePost: UITextField!
+    @IBOutlet weak var flashWarning: UILabel!
     
     
     //MAIN BODY
@@ -50,6 +53,16 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.setFields()
     }
     
+    //POST OUTLET ACTIONS
+    
+    @IBAction func submitButtonPressed(sender: UIButton) {
+        let valid = validation()
+        if valid{
+            
+        }
+    }
+    
+    
     
     //CONFIGURE SEVERITY VIEW
     
@@ -72,7 +85,7 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     
-    //TEXT VIEW MONITORS
+    //TEXT MONITORS
     
     func textViewDidBeginEditing(textView: UITextView) {
         litDescript.text = ""
@@ -84,11 +97,73 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
         charCounterChange()
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.tag == 3 && textField.text != nil{
+            var decimal:Bool = false
+            var idx = 0
+            
+            for letter in textField.text!.characters{
+                if letter == "."{
+                    decimal = true
+                    break
+                }
+                idx += 1
+            }
+            
+            if decimal == false{
+                textField.text! += ".00"
+            }else if idx + 1 == textField.text!.characters.count{
+                textField.text! += "0"
+            }
+            
+        }
+    }
+    
+    func validation()->Bool{
+        var warning = ""
+        let donateWarning = "post must have min. donation of 1 USD"
+        
+        if titlePost.text?.characters.count < 5{
+            warning = "Title too short"
+        }else if titlePost.text?.characters.count > 500{
+            warning = "Title too long"
+        }else if litDescript.text.characters.count < 5{
+            warning = "Please add a description"
+        }else if litDescript.text.characters.count > 300{
+            warning = "Description too long"
+        }
+        
+        if donateBody.text!.characters.count < 3 || Double(donateBody.text!) < 0.0{
+            if warning.characters.count == 0{
+                warning = donateWarning
+            }else{
+                warning += " and " + donateWarning
+            }
+        }
+        
+        if warning.characters.count > 0{
+            flashWarning.text = warning
+                
+            flashWarning.fadeIn(0.5, delay: 0.0, completion: {
+                (finished: Bool) -> Void in
+                print("we'reDONEWARNINGLKJSDF")
+                self.flashWarning.fadeOut(0.8, delay: 1.0)
+            })
+            
+            return false
+
+        }else{
+            return true
+        }
+    }
     
     //WORKER FUNCTIONS
     func setNewImageRow(){
         for idx in 0..<gallery.count{
-            self.imageRow[idx].image = gallery[idx]
+            print(gallery[idx])
+            print("about2print imagerow")
+            print (imageRow[idx])
+            self.imageRow[idx].image = self.gallery[idx]
         }
     }
     
@@ -101,14 +176,20 @@ class postViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDat
             litDescript.textColor = UIColor.redColor()
         }else if litDescript.textColor == UIColor.redColor(){
             charCounter.textColor = UIColor.blackColor()
-            litDescript.textColor = UIColor.grayColor()
+            litDescript.textColor = UIColor.blackColor()
         }
     }
     
     func setFields(){
+        self.flashWarning.alpha = 0.0
         self.severityLevel.dataSource = self
         self.severityLevel.delegate = self
         self.litDescript.delegate = self
+        self.donateBody.keyboardType = .DecimalPad
+        self.donateBody.text = "0.00"
+        self.donateBody.textColor = UIColor.grayColor()
+        self.donateBody.delegate = self
+        
         
         if self.new{
             self.litDescript.text = "Enter task description"

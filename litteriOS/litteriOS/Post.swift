@@ -55,4 +55,8 @@ class Post{
         })
         task.resume()
     }
+    
+    func tradeImageForUrl(){
+        
+    }
 }

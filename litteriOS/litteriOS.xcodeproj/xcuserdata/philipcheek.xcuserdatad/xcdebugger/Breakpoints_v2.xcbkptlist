@@ -233,11 +233,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/User.swift"
-            timestampString = "486874891.361199"
+            timestampString = "487394490.908358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "detailInjection(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -425,11 +425,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/User.swift"
-            timestampString = "486874891.361199"
+            timestampString = "487394490.908358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "updatePaymentMethod(_:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -441,11 +441,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/introViewController.swift"
-            timestampString = "486949703.059096"
+            timestampString = "487394490.908358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -489,12 +489,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/postViewController.swift"
-            timestampString = "487220804.520421"
+            timestampString = "487554010.740102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "charCounterChange()"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "setNewImageRow()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -505,12 +505,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "litteriOS/postViewController.swift"
-            timestampString = "487224668.012868"
+            timestampString = "487554010.740102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "setNewImageRow()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "validation()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "litteriOS/postViewController.swift"
+            timestampString = "487554010.740102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "validation()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

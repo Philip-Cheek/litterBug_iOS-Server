@@ -30,7 +30,7 @@ class User{
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(self.details, options: NSJSONWritingOptions.PrettyPrinted)
             
-            let url = NSURL(string: "http://192.168.1.2:5000/create")!
+            let url = NSURL(string: "REDACTED/create")!
             let request = NSMutableURLRequest(URL: url)
             
             request.HTTPMethod = "POST"
@@ -72,9 +72,10 @@ class User{
         print(fb)
         print(info)
         do {
+            print("wegotit")
             let jsonData = try NSJSONSerialization.dataWithJSONObject(fb, options: NSJSONWritingOptions.PrettyPrinted)
             
-            let url = NSURL(string: "http://192.168.1.2:5000/login")!
+            let url = NSURL(string: "REDACTED/login")!
             let request = NSMutableURLRequest(URL: url)
             
             request.HTTPMethod = "POST"

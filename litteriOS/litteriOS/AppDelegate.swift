@@ -10,15 +10,25 @@ import UIKit
 import CoreData
 import FBSDKCoreKit
 import Stripe
+import AWSCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let cognitoIdentityPoolId = "REDACTED"
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Stripe.setDefaultPublishableKey("pk_test_zdG7Gz0b6VeC8RjjqBNguCcw")
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1, identityPoolId:cognitoIdentityPoolId )
+        
+        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

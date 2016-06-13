@@ -38,12 +38,14 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
         if (FBSDKAccessToken.currentAccessToken() != nil && login_clicked == false){
             //self.loginButton.hidden = true
             //self.welcome.hidden = false
+            print("let'so")
             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
                 
                 if ((error) != nil){
                     print("Error: \(error)")
                 }else {
+                    print("whatwhat")
                     let fb = ["id": result["id"]!! as! String]
                     print (fb)
                     self.user.login(fb, callback: self.performSegue)
