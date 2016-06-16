@@ -30,7 +30,7 @@ class User{
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(self.details, options: NSJSONWritingOptions.PrettyPrinted)
             
-            let url = NSURL(string: "REDACTED/create")!
+            let url = NSURL(string: "REDACTED:5000/create")!
             let request = NSMutableURLRequest(URL: url)
             
             request.HTTPMethod = "POST"
@@ -50,6 +50,7 @@ class User{
                         print ("logged")
                         
                         self.details["id"] = data_res!["id"]! as? String
+                        socketManager.sharedInstance.initSocketConnection(self.details["id"]! as! String)
                         callback()
                     }else{
                         print("not logged")
@@ -75,7 +76,7 @@ class User{
             print("wegotit")
             let jsonData = try NSJSONSerialization.dataWithJSONObject(fb, options: NSJSONWritingOptions.PrettyPrinted)
             
-            let url = NSURL(string: "REDACTED/login")!
+            let url = NSURL(string: "REDACTED:5000/login")!
             let request = NSMutableURLRequest(URL: url)
             
             request.HTTPMethod = "POST"
@@ -96,6 +97,7 @@ class User{
                         
                         let user_details = data_res!["user"]!
                         self.detailInjection(user_details)
+                        socketManager.sharedInstance.initSocketConnection(self.details["id"]! as! String)
                         callback()
                         
                     }else{
@@ -121,7 +123,7 @@ class User{
             print(tokenData)
             let jsonData = try NSJSONSerialization.dataWithJSONObject(tokenData, options: NSJSONWritingOptions.PrettyPrinted)
             
-            let url = NSURL(string: "http://192.168.1.2:5000/updatePaymentMethod")!
+            let url = NSURL(string: "http://REDACTED:5000/updatePaymentMethod")!
             let request = NSMutableURLRequest(URL: url)
             
             request.HTTPMethod = "POST"

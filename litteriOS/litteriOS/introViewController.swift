@@ -61,6 +61,7 @@ class introViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("what the fuck")
         if segue.identifier == "initPaySegue"{
             let pay = segue.destinationViewController as! payViewController
             pay.user = self.user

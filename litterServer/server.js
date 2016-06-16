@@ -14,5 +14,7 @@ require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
 
 var server = app.listen(5000, function(){
-  console.log('listening on port youbetha');
+  console.log('we\'re on port 5000');
 });
+
+var io = require('./server/config/socketListener.js')(server);

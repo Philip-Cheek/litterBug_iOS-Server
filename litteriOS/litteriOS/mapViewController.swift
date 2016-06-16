@@ -95,7 +95,6 @@ class mapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func setViewAfterLoad(){
         print("VALUE PASS CHECK! VALUE PASS CHECK")
-        print (self.user)
         
         self.topBar.backgroundColor = UIColor.brandGreen().colorWithAlphaComponent(0.75)
         self.mapView.layoutMargins = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)

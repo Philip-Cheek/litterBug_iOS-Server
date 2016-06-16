@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var stripe = require('stripe')("sk_test_XttTL6wlT53nyOeV6XKNQ1GY")
+var stripe = require('stripe')("sk_test_REDACTED")
 
 module.exports = (function() {
 	return{
@@ -45,6 +45,16 @@ module.exports = (function() {
 					}else{
 						console.log(result)
 						if (result != null){
+
+							var paymentItems = ["customerID", "paymentID"]
+
+							for (var idx = 0; idx < 2; idx++){
+								console.log(paymentItems[idx])
+								if (result[paymentItems[idx]] != "none"){
+									result[paymentItems[idx]] = "registered"
+								}
+							}
+							
 							res.json({"status": "logged", "user": result})
 						}else{
 							res.json({"status": "notLogged"})

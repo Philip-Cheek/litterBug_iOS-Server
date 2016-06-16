@@ -1,10 +1,59 @@
-client_manager = function(){
+var posts = require('./../controllers/posts.js')
+
+
+clientManager = function(){
 
 	var manager = {};
   
 	manager.socket_locator = {};
 	manager.seeds = [];
+
+  manager.findAudienceForPost = function(postID,socket,callback){
+    posts.findOne({"_id":postID},function(err,result){
+      if (err){
+        console.log("we have error on socket post find")
+      }else{
+        console.log("client manager succesfully found post")
+        console.log(result);
+        result["donation"] = String(result["donation"]);
+
+        var room = result["_id"];
+        var userSeeds = this.socket_locator[socket.id];
+
+        console.log("About to print user seeds")
+        console.log(userSeeds);
+
+        for (var seed = 0; seed < userSeeds.length; seed++){
+          console.log("we are iterating through userSeeds")
+          console.log(userSeeds[seed]);
+
+          var locationBalloon = socket_Locator[userSeeds[seed]].sIndex.users;
+          var useredPrev = [];
+          console.log("determined users in location balloon");
+          console.log(locationBalloon);
+
+          for (var idx = 0; idx < locationBalloon; idx++){
+            var current = locationBalloon[idx];
+
+            console.log("printing current user in locationBalloon");
+            console.log(current);
+
+            if (this.inRadius({"lng":result["loc"][0],"lat":result["loc"][1]},{"lng":current.origin.lng,"lat":current.origin.lat},64373) &&
+             useredPrev.includes(current.socketID)==false){
+                console.log("WOW WE haveSuccessfulladded a thing");
+                current.socket.join(room);
+                useredPrev.push(current.socketId);
+            }
+          }
+        }
+
+        return room;nod
+      }
+    });
+  }
   
+
+  //distance to be expressed in meters. radius must be in meters
 	manager.inRadius = function(origin, location, radius){
     
     	if (typeof (Number.prototype.toRad) === "undefined") {
@@ -31,7 +80,7 @@ client_manager = function(){
     	return false;
   	};
   
-  	manager.addUser = function(username, id, location, radius){
+  	manager.addUser = function(username, socket, location, radius){
     	var unique = true;  
     	var socket_id = id;
 
@@ -43,8 +92,9 @@ client_manager = function(){
         		"lng": location.lng,
         		"lat": location.lat,
       		},
-      		"socketId": socket_id,
-      		"radius": radius
+      		"socketId": socket.id,
+          "socket": socket,
+      		"radius": radius,
     	};
 
   
@@ -97,10 +147,12 @@ client_manager = function(){
     	return this.seeds;
   	};
   
+
   	manager.spawnMessageRoom = function(id, message_loc){
    
     	var user_seeds = this.socket_locator[id];
     	var room = id;
+      var roomIDs = []
     
     	var seed_hit;
     	var u_linger;
@@ -112,6 +164,7 @@ client_manager = function(){
       		for (var user = 0; user < seed_hit.users.length; user++){
         		if (user != u_linger && this.inRadius(seed_hit.users[user].origin, message_loc, seed_hit.users[user].radius)){
           			room += "#" + seed_hit.users[user].socketId;
+                roomIDs.push(seed_hit.users[user].socketId)
         		}
       		}
     	}
@@ -123,4 +176,4 @@ client_manager = function(){
   return manager;
 };
 
-module.exports = client_manager()
+module.exports = new clientManager()
